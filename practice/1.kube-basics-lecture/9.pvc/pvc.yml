@@ -1,0 +1,13 @@
+---
+# file: practice/1.kube-basics-lecture/9.pvc/pvc.yml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: my-claim
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+...
