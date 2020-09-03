@@ -1,0 +1,25 @@
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+    nginx.ingress.kubernetes.io/whitelist-source-range: 1.1.1.1/32,2.2.2.2/32
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    certmanager.k8s.io/cluster-issuer: letsencrypt
+  labels:
+    app: kube-api
+  name: kube-api
+  namespace: default
+spec:
+  rules:
+  - host: k8s-api.s000000.edu.slurm.io
+    http:
+      paths:
+      - backend:
+          serviceName: kubernetes
+          servicePort: 443
+        path: /
+  tls:
+  - hosts:
+    - k8s-api.s000000.edu.slurm.io
+    secretName: k8s-api-s000-slurm-io-tls
