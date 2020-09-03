@@ -53,7 +53,7 @@ helm delete ops-view --namespace kube-system
 ```bash
 helm pull stable/kube-ops-view
 
-tar -zxvf kube-ops-view-1.2.0.tgz
+tar -zxvf kube-ops-view-XX.YY.ZZ.tgz
 
 cd kube-ops-view/
 ```
