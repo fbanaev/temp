@@ -71,7 +71,7 @@ cd myapp
 touch Chart.yaml values.yaml
 mkdir templates
 
-cp ~/slurm/practice/6.helm/simple-deployment.yaml /srv/myapp/templates/
+cp ~/slurm/practice/5.helm/simple-deployment.yaml /srv/myapp/templates/
 ```
 
 2) Добавим в файл `Chart.yaml` минимально необходимые поля:
