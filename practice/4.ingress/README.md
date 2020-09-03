@@ -3,7 +3,7 @@
 1) Деплоим "основное" приложение
 
 ```bash
-cd ~/slurm/practice/5.ingress/
+cd ~/slurm/practice/4.ingress/
 
 kubectl apply -f app
 ```
