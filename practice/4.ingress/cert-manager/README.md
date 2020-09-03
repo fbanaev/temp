@@ -3,7 +3,7 @@
 1) Устанавливаем cert-manager, выпускаем тестовый сертификат
 
 ```bash
-kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.15.1/cert-manager.crds.yaml
+kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.0/cert-manager.crds.yaml
 
 kubectl create namespace cert-manager
 
@@ -13,7 +13,7 @@ helm repo update
 helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
-  --version v0.15.1
+  --version v1.0.0
 ```
 
 2) Проверяем работу, выпустив самоподписанный сертификат
