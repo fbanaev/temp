@@ -4,7 +4,7 @@
 
 1) Переходим в директорию с практикой.
 ```bash
-cd ~/slurm/practice/4.secure-and-highlyavailable-apps/psp
+cd ~/slurm/practice/7.secure-and-highlyavailable-apps/psp
 ```
 
 2) Cоздаем тестового пользователя
