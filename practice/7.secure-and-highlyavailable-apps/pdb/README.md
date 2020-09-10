@@ -4,7 +4,7 @@
 
 1) Переходим в директорию с практикой
 ```bash
-cd ~/slurm/practice/4.secure-and-highlyavailable-apps/pdb
+cd ~/slurm/practice/7.secure-and-highlyavailable-apps/pdb
 ```
 
 2) Открываем `nginx/ingress.yaml` и в нем правим 
