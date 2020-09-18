@@ -14,15 +14,17 @@ cd slurm/practice/8.secret/
 kubectl get pv
 ```
 
-2) Настроим правила RBAC
+2) Добавим репо с чартами
 ```
-kubectl apply -f operator/deploy/operator-rbac.yaml
-kubectl apply -f operator/deploy/rbac.yaml
+helm repo add banzaicloud-stable https://kubernetes-charts.banzaicloud.com
 ```
 
 3) Установим оператор
 ```
-kubectl apply -f operator/deploy/operator.yaml
+kubectl create namespace vault-infra
+kubectl label namespace vault-infra name=vault-infra
+
+helm upgrade --namespace vault-infra --install vault-operator banzaicloud-stable/vault-operator --wait
 ```
 
 ### Устанавливаем Vault
@@ -49,6 +51,7 @@ metadata:
 ```
  
 ```
+kubectl apply -f operator/deploy/rbac.yaml
 kubectl apply -f operator/deploy/cr.yaml
 ```
 
@@ -61,11 +64,10 @@ kubectl get pod
 
 ### Теперь устанавливаем mutating webhook with Helm
 
-6) Добавляем репозиторий и устанавливаем чарт
+6) Устанавливаем чарт
 
 ```
-helm repo add banzaicloud-stable https://kubernetes-charts.banzaicloud.com
-helm upgrade --namespace vault-infra --install vault-secrets-webhook banzaicloud-stable/vault-secrets-webhook --wait --create-namespace
+helm upgrade --namespace vault-infra --install vault-secrets-webhook banzaicloud-stable/vault-secrets-webhook --wait
 ```
 
 ### Получаем root токен администратора vault
@@ -188,11 +190,37 @@ kubectl exec -it hello-secrets-6d46fb96db-tvsvb env | grep AWS
 
 > видим также ссылку на vault: AWS_SECRET_ACCESS_KEY=vault:secret/data/accounts/aws#AWS_SECRET_ACCESS_KEY
 
-21) Удаляем все
+### Продвинутая часть. Настраиваем права доступа в зависимости от сервис аккаунта.
+
+21) Запускаем продакшен в неймспейсе default
+
+```
+kubectl apply -f prod-deployment.yaml
+```
+Под войдет в состояние CrashloopBackoff, потому что с токеном от сервис аккаунтов в ns default не разрешен доступ в хранилище prod
+
+22) Запускаем продакшен в неймспейсе producton
+
+```
+kubectl create ns production
+kubectl -n production apply -f prod-deployment.yaml
+```
+Под запустится
+
+23) Смотрим под и логи
+
+```
+kubectl -n production get pod
+kubectl -n production logs hello-prod-secrets-......
+```
+
+24) Удаляем все
 
 ```
 kubectl delete deployment vault-console
 kubectl delete deployment hello-secrets
+kubectl delete deployment hello-prod-secrets
+kubectl delete deployment hello-prod-secrets -n production
 
 # удаляем vault, с помощью удаления CRD
 kubectl delete vault vault
@@ -200,7 +228,7 @@ kubectl delete vault vault
 kubectl get pod
 
 # добиваем оператора
-kubectl delete deployment vault-operator
+helm delete -n vault-infra vault-operator
 helm delete -n vault-infra vault-secrets-webhook
 
 kubectl delete ns vault-infra
