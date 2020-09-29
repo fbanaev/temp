@@ -1,48 +1,29 @@
-## ci/cd практика
+# Основы GitLab CI/CD
 
-### Ссылки на задания
+[[_TOC_]]
 
-#### [1. Настройка gitlab-runner](practice/4.gitlab_ci_cd/01-gitlab-runner)
+## Содержание
 
-#### [2. Настройка gitlab ci/cd](practice/4.gitlab_ci_cd/02-gitlab-ci)
++ [12.1. Настройка gitlab-runner](gitlab-runner.md)
++ [2. Настройка GitLab CI/CD](gitlab-ci.md)
++ [3. Шаблоны GitLab CI/CD](gitlab-ci-include.md)
 
-#### [3. Шаблоны gitlab ci/cd](practice/4.gitlab_ci_cd/03-gitlab-ci-teml)
+## SSH login
 
-
-#### SSH setup
-
-Для выполнения практики нам понадобится SSH доступ на:
-
-* sandbox server. 
-
-`Все работы на этом хосте проводятся под учетной записью root`
-
-#### Установка Docker
-
-* Устанавливаем необходимые пакеты
-
-```bash
-yum install -y yum-utils \
-  device-mapper-persistent-data \
-  lvm2
+Для выполнения практики нам понадобится SSH доступ на узлы **sandbox** и **xpaste**:
+```sh
+ssh sandbox
+```
+и, в другой консоли
+```sh
+ssh xpaste
 ```
 
-* Устанавливаем репозиторий docker
+## Форк проекта xpaste (если ещё не сделан)
 
-```bash
-yum-config-manager \
-    --add-repo \
-    https://download.docker.com/linux/centos/docker-ce.repo
++ Зайти в проект https://gitlab.slurm.io/tinkoff/xpaste ;
+  + справа вверху нажать кнопочку 'Fork';
+  + на следующей странице выбрать свою группу (`g******`).
++ Склонировать **свой форк** проекта xpaste на devbox или локалхост --
+по желанию, как вам удобнее работать (используя схему **ssh://**)
 
-```
-* Устанавливаем docker 
-
-```bash
-yum install -y docker-ce docker-compose
-```
-
-* Запускаем службу и добавляем ее в автостарт
-
-```bash
-systemctl enable --now docker
-```
