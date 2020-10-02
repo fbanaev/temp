@@ -82,8 +82,8 @@ git push origin feature/ci
 + нажать **Submit merge request**, затем посмотреть на созданный pipeline;
 + расстроиться, исправить ошибки в Dockerfile, запушить снова;
 + после успешного завершения pipeine принять MR (нажать кнопку **[Merge]**); посмотреть на созданный pipeline;
-+ после завершения pipeline пойти браузером на **xpaste_server_IP** (взять в уведомлениях
-- например, https://edu.slurm.io/notifications), посмотреть на приложение.
++ после завершения pipeline пойти браузером на **xpaste_server_IP** (взять в уведомлениях - например,
+https://edu.slurm.io/notifications), и посмотреть на приложение.
 
 <!--
 Переходим на страницу форка проекта xpaste: https://gitlab.slurm.io/GROUP-NAME/xpaste/merge_requests

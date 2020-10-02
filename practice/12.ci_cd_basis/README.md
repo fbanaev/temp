@@ -17,6 +17,8 @@ ssh sandbox
 ssh xpaste
 ```
 
+Обратите внимание, сначала нужно залогиниться на **devbox.slurm.io**!
+
 ## Форк проекта xpaste (если ещё не сделан)
 
 + Зайти в проект https://gitlab.slurm.io/tinkoff/xpaste ;
