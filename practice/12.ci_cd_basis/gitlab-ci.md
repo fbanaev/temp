@@ -57,6 +57,7 @@ SECRET_KEY_BASE: <password_3>
 ### Создание конфигурационного файла Gitlab CI
 
 + Перейти в каталог с клоном форка xpaste;
+  + представиться системе контроля версий (если ещё не сделано);
 + создать новую ветку;
 + скопировать конфигурационный файл из бэкапа;
 + добавить его в staging area;
@@ -64,6 +65,8 @@ SECRET_KEY_BASE: <password_3>
 + запушить:
 ```sh
 cd ~/xpaste
+git config --global user.email "YOUR@EMAIL.TLD"
+git config --global user.name "Your Name or Student Number"
 git checkout -b feature/ci
 cp -v .gitlab-ci.yml.docker.bak .gitlab-ci.yml
 git add .gitlab-ci.yml
@@ -79,7 +82,8 @@ git push origin feature/ci
 + нажать **Submit merge request**, затем посмотреть на созданный pipeline;
 + расстроиться, исправить ошибки в Dockerfile, запушить снова;
 + после успешного завершения pipeine принять MR (нажать кнопку **[Merge]**); посмотреть на созданный pipeline;
-+ после завершения pipeline пойти браузером на <XPASTE_IP>, посмотреть не приложение.
++ после завершения pipeline пойти браузером на **xpaste_server_IP** (взять в уведомлениях
+- например, https://edu.slurm.io/notifications), посмотреть на приложение.
 
 <!--
 Переходим на страницу форка проекта xpaste: https://gitlab.slurm.io/GROUP-NAME/xpaste/merge_requests

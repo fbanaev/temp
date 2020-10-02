@@ -1,12 +1,10 @@
 # Основы GitLab CI/CD
 
-[[_TOC_]]
-
 ## Содержание
 
 + [12.1. Настройка gitlab-runner](gitlab-runner.md)
-+ [2. Настройка GitLab CI/CD](gitlab-ci.md)
-+ [3. Шаблоны GitLab CI/CD](gitlab-ci-include.md)
++ [12.2. Настройка GitLab CI/CD](gitlab-ci.md)
++ [12.3. Шаблоны GitLab CI/CD](gitlab-ci-include.md)
 
 ## SSH login
 
