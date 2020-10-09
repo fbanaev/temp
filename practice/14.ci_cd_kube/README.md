@@ -3,12 +3,6 @@
 На этой лекции мы рассмотрим проблематику и практику доставки приложений
 в кластеры Kubernetes, а также познакомимся с операторами Kubernetes.
 
-## Содержание
-
-+ [14.1 Оператор и его установка](kubernetes-operator.md)
-+ [14.2 CD посредством Helm](helm-deploy.md)
-+ [14.3 Краткая диагностика через Helm hooks](helm-hook.md)
-
 ## Pre-flight Checks
 
 Для того, чтобы убедиться в наличии доступа к учебной инфраструктуре, зайдите по SSH на узел **sbox**
@@ -17,3 +11,9 @@
 ssh sbox.slurm.io -l <YOUR_LOGIN>
 kubectl get ns
 ```
+
+## Содержание
+
++ [14.1 Оператор и его установка](kubernetes-operator.md)
++ [14.2 CD посредством Helm](helm-deploy.md)
++ [14.3 Краткая диагностика через Helm hooks](helm-hook.md)

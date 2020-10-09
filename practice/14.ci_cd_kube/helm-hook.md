@@ -8,12 +8,13 @@
 
 + скопировать нужный helm template в каталог с шаблонами
 ```sh
-cp -v .slut/hooklog.yml .helm/templates/
+cp -v .sump/hooklog.yaml .helm/templates/
 ```
 + добавить в **.gitlab-ci.yml** необходимые для работы job'а команды и параметры
 ```diff
 deploy:app:
   after_script:
++    - test -f ".helm/templates/hooklog.yaml" || exit 2
 +    - kubectl -n $CI_ENVIRONMENT_SLUG logs -lcomponent=atomiclog --tail=-1
 +    - kubectl -n $CI_ENVIRONMENT_SLUG delete job -lcomponent=atomiclog
   extends: .env
