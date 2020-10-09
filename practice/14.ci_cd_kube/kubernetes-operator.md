@@ -34,7 +34,7 @@ Kubernetes master URL, взятый из вывода команды `kubectl cl
 + убедиться, что оператор задеплоился и работает:
   ```sh
   kubectl -n op-dynns get po -o wide
-  kubectl -n op-dynns get metadynns
+  kubectl -n op-dynns get metadynns  # <-- Если ответит "нет таких ресурсов" -- то просто подождать немного и повторить
   kubectl -n op-dynns describe metadynns xpaste
   ```
 
