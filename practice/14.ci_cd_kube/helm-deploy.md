@@ -8,7 +8,7 @@
   + `K8S_API_URL`: взять из вывода `kubectl cluster-info`;
   + `K8S_CI_TOKEN`: получить в нашем сетапе можно следующей командой:
     ```sh
-    kubectl -n op-dynns-xpaste get -o jsonpath='{ .data.token }' secret dynns-cr-sa-token-<TAB> | base64 -d; echo
+    kubectl -n op-dynns-xpaste get secret dynns-cr-sa-token-<TAB> -o jsonpath='{ .data.token }' | base64 -d; echo
     ```
 + _выполнить действия, специфичные для используемого оператора:_
   + _API token:_
@@ -70,11 +70,10 @@ _Видим 503. При этом pipeline завершился успешно. �
 
 _Отлично, теперь оно падает. Впрочем -- непонятно, почему._
 
-<!-- Снести неудачный Helm release:
+Снести неудачный Helm release:
 ```sh
 helm3 -n <YOUR_XPASTE_REVIEW_NAMESPACE> uninstall g000136-xpaste
 ```
--->
 
 ----
 

@@ -8,7 +8,7 @@
   ```
 + Получить токен этой учётной записи:
   ```sh
-  kubectl -n users get -o jsonpath='{ .data.token }' secret deploy-admin-token-<TAB> | base64 -d; echo
+  kubectl -n users get secret deploy-admin-token-<TAB> -o jsonpath='{ .data.token }' | base64 -d; echo
   ```
 + Сделать форк проекта https://gitlab.slurm.io/tinkoff/dynns-operator в свою группу;
 + добавить **CI variable** с именем `K8S_CI_TOKEN`, поместив в значение переменной
@@ -20,6 +20,7 @@ Kubernetes master URL, взятый из вывода команды `kubectl cl
   + Name: `gitlab-deploy-token`
   + Scopes: read_registry
   + [Create deploy token]
+  + _(этот токен никуда сохранять не надо, он сам подтянется, где нужно)_
 + _выполнить специфичные для данного оператора действия:_
   + генерацию случайного пароля
     ```sh
