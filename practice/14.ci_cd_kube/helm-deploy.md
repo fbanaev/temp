@@ -72,7 +72,7 @@ _Отлично, теперь оно падает. Впрочем -- непон�
 
 Снести неудачный Helm release:
 ```sh
-helm3 -n <YOUR_XPASTE_REVIEW_NAMESPACE> uninstall g000136-xpaste
+helm -n <YOUR_XPASTE_REVIEW_NAMESPACE> uninstall g000136-xpaste
 ```
 
 ----
