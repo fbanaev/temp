@@ -12,7 +12,7 @@ Packer создаёт вычислительные ресурсы для сво�
 **~/slurm/practice/15.iac_terraform/tf_base $**
 
 + **main.tf**
-  + закомментировать вызов нашего модуля `module "vm_1" { ... }`
+  + удалить вызов нашего модуля `module "vm_1" { ... }`
 + **outputs.tf**
   + раскомментировать вызов `output "network_id" { ... }`
   + закомментировать всё остальное (`output "server_internal_ips" { ... }`)
@@ -111,7 +111,7 @@ Packer создаёт вычислительные ресурсы для сво�
     source      = "git::ssh://git@gitlab.slurm.io/g000000/module_openstack_vm.git?ref=master"
     network_id  = openstack_networking_network_v2.network_1.id
     subnet_id   = openstack_networking_subnet_v2.subnet_1.id
-    vm_count    = 1
+    vm_count    = var.vm_count
 
     image_id    = # указать UUID для DB и APP соответcтвенно и не забыть про кавычки
     volume_type = var.volume_type
@@ -150,13 +150,13 @@ Packer создаёт вычислительные ресурсы для сво�
   ```
 + запустить Terraform
   ```sh
-  terraform init
+  terraform get
   terraform apply -var-file=secrets.tfvars
   ```
 
 На выходе получаем IP нашего сервера:
 ```sh
-Apply complete! Resources: 11 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 8 added, 0 changed, 0 destroyed.
 
 Outputs:
 

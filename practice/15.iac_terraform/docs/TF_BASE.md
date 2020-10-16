@@ -51,7 +51,7 @@ Hint: `openstack_compute_instance_v2._NAME_.access_ip_v4`
 1. Параметризуйте значение размера памяти во `flavor`'e и задайте ему
 значение по-умолчанию по аналогии с `hdd_size`; затем можно отресайзить ВМ
   ```sh
-  TF_VAR_ram=2048 terraform apply -var-file=secrets.tfvars
+  TF_VAR_ram=3072 terraform apply -var-file=secrets.tfvars
   ```
 1. Избавьтесь от переменной `public_key`; ключ читать напрямую из **~/.ssh/id_rsa.pub**,
 используя [функцию file()](https://www.terraform.io/docs/configuration/functions/file.html)
@@ -174,6 +174,7 @@ Hint: `openstack_compute_instance_v2._NAME_.access_ip_v4`
 то в выводе ресурсов должна присутствовать звездочка '<b>*</b>').
 1. Модуль может быть удаленным; вынести модуль в git-репозиторий (gitlab, github и т.д.) и подключить его
 с указанием имени ветки или тега; [документация по module sources](https://www.terraform.io/docs/modules/sources.html#github).
+(hint: чтобы скачать обновления удаленного модуля -- например, если вы запушили правку -- используйте команду `terraform get -update`)
 
 [ :scroll: ](https://gitlab.slurm.io/-/snippets/70)
 
