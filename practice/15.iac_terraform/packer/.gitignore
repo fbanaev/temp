@@ -1,0 +1,7 @@
+.terraform
+secrets.tfvars
+vars.json
+terraform.tfstate
+terraform.tfstate.backup
+terraform
+xpaste
