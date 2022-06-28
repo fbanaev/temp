@@ -62,5 +62,5 @@ my-deployment-5b47d48b58-r95lt
 ```bash
 kubectl delete all --all
 kubectl delete configmap --all
-kubectl delete ingress --all
+`kubectl delete ingress --all`
 ```
